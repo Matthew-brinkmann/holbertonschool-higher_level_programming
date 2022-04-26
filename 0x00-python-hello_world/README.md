@@ -6,4 +6,3 @@ This project is a list of projects to gain a basic understanding of the python c
 
 ### PYTHON VERSION USUED
 > 3.8.10
-```
