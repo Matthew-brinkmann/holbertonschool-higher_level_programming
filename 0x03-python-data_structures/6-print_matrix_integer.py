@@ -1,4 +1,4 @@
-#!/bin/usr/python3
+#!/usr/bin/python3
 
 def print_matrix_integer(matrix=[[]]):
     mat_height = len(matrix)
