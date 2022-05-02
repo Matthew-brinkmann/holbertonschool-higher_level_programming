@@ -5,8 +5,8 @@ def divisible_by_2(my_list=[]):
         return None
 
     newList = []
-    for i in range(len(my_list)):
-        if my_list[i] % 2 == 0:
+    for i in my_list:
+        if int(i) % 2 == 0:
             newList.insert(i, True)
         else:
             newList.insert(i, False)
