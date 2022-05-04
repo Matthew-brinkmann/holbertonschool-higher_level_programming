@@ -8,7 +8,7 @@ def roman_to_int(roman_string):
         return 0
     for ch in roman_string:
         addVal = romConv.get(ch)
-        if addVal == None:
+        if addVal is None:
             return 0
         else:
             intHold.append(addVal)
