@@ -15,7 +15,7 @@ def roman_to_int(roman_string):
         if i != (len(intHold) - 1):
             if intHold[i] < intHold[i + 1]:
                 intHold[i] = -intHold[i]
-        if len(intHold) == 0:
+        if len(intHold) < 4:
             if i < (len(intHold) - 2):
                 if intHold[i] < intHold[i + 2]:
                     intHold[i] = -intHold[i]
