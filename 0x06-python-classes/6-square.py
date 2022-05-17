@@ -81,7 +81,8 @@ class Square:
 
     def __is_size_correct(self, size):
         """
-        this is a private method to check if the inputted size is correct value and type.
+        this is a private method to check if the inputted size
+        is correct value and type.
         """
         if type(size) != int:
             raise TypeError("size must be an integer")
@@ -94,7 +95,8 @@ class Square:
 
     def __is_position_correct(self, position):
         """
-        this is a private method to check if the inputted position is correct value and type.
+        this is a private method to check if the
+        inputted position is correct value and type.
         """
         if not isinstance(position, type((0, 0))):
             raise TypeError("position must be a tuple of 2 positive integers")
