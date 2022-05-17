@@ -1,9 +1,15 @@
 #!/usr/bin/python3
-from tokenize import single_quoted
+""" 2 class to create single linked list"""
 
 
 class Node:
+    """the node class to handle each individual node"""
     def __init__(self, data, next_node=None):
+        """
+        init to set the data for the new node
+        args: data = int to go into node
+        next_node = points to next node
+        """
         if type(data) == int:
             self.__data = data
         else:
@@ -15,10 +21,16 @@ class Node:
 
     @property
     def data(self):
+        """
+        returns node data
+        """
         return (self.__data)
 
     @data.setter
     def data(self, value):
+        """
+        sets value __data for node
+        """
         if type(value) == int:
             self.__data = value
         else:
@@ -26,10 +38,16 @@ class Node:
 
     @property
     def next_node(self):
+        """
+        returns node data
+        """
         return (self.__next_node)
 
     @next_node.setter
     def next_node(self, value):
+        """
+        sets value __next_node for node
+        """
         if type(value) == Node or value is None:
             self.__next_node = value
         else:
@@ -37,12 +55,24 @@ class Node:
 
 
 class SinglyLinkedList:
+    """
+    the node class to handle the whole list
+    Nodes is the number of nodes in list
+    """
     Nodes = 0
 
     def __init__(self):
+        """
+        init node to new head of None
+        """
         self.__head = None
 
     def __str__(self):
+        """
+        Handles returning all the values in a string
+        so it can be printed using the  print
+        function
+        """
         tmp = self.__head
         string = ""
         while tmp is not None:
@@ -53,6 +83,10 @@ class SinglyLinkedList:
         return string
 
     def sorted_insert(self, value):
+        """
+        handles the insert of new nodes, and ensures they are in
+        the correct order
+        """
         if SinglyLinkedList.Nodes == 0:
             self.__head = Node(value)
             SinglyLinkedList.Nodes += 1
