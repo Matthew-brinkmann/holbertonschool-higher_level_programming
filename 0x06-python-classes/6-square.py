@@ -98,7 +98,7 @@ class Square:
         this is a private method to check if the
         inputted position is correct value and type.
         """
-        if not isinstance(position, type((0, 0))):
+        if not isinstance(position, type((0, 0))) or len(position) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
         elif type(position[0]) != int or type(position[1]) != int:
             raise TypeError("position must be a tuple of 2 positive integers")
