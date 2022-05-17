@@ -57,9 +57,7 @@ class Node:
 class SinglyLinkedList:
     """
     the node class to handle the whole list
-    Nodes is the number of nodes in list
     """
-    Nodes = 0
 
     def __init__(self):
         """
@@ -87,9 +85,8 @@ class SinglyLinkedList:
         handles the insert of new nodes, and ensures they are in
         the correct order
         """
-        if SinglyLinkedList.Nodes == 0:
+        if self.__head is None:
             self.__head = Node(value)
-            SinglyLinkedList.Nodes += 1
             return
 
         tmp = self.__head
@@ -97,7 +94,6 @@ class SinglyLinkedList:
         if tmp.data >= value:
             new_node.next_node = tmp
             self.__head = new_node
-            SinglyLinkedList.Nodes += 1
             return
 
         while tmp.next_node is not None:
@@ -106,4 +102,3 @@ class SinglyLinkedList:
             tmp = tmp.next_node
         new_node.next_node = tmp.next_node
         tmp.next_node = new_node
-        SinglyLinkedList.Nodes += 1
