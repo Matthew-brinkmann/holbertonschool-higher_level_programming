@@ -7,7 +7,7 @@ class Square:
     class for Square
     """
     def __init__(self, size=0):
-          """
+        """
         Init class with args: size
         runs a check to ensure size data is correct type and value.
         """
