@@ -13,11 +13,11 @@ class Node:
         if isinstance(data, int):
             self.__data = data
         else:
-            TypeError("data must be an integer")
+            raise TypeError("data must be an integer")
         if type(next_node) == Node or next_node is None:
             self.__next_node = next_node
         else:
-            TypeError("next_node must be a Node object")
+            raise TypeError("next_node must be a Node object")
 
     @property
     def data(self):
@@ -34,7 +34,7 @@ class Node:
         if isinstance(value, int):
             self.__data = value
         else:
-            TypeError("data must be an integer")
+            raise TypeError("data must be an integer")
 
     @property
     def next_node(self):
@@ -51,7 +51,7 @@ class Node:
         if type(value) == Node or value is None:
             self.__next_node = value
         else:
-            TypeError("next_node must be a Node object")
+            raise TypeError("next_node must be a Node object")
 
 
 class SinglyLinkedList:
@@ -85,6 +85,9 @@ class SinglyLinkedList:
         handles the insert of new nodes, and ensures they are in
         the correct order
         """
+        if type(value) != int:
+            raise TypeError("data must be an integer")
+
         if self.__head is None:
             self.__head = Node(value)
             return
