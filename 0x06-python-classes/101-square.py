@@ -36,7 +36,8 @@ class Square:
                 str += ' '
             for x in range(self.__size):
                 str += '#'
-            str += '\n'
+            if i < (self.__size - 1):
+                str += '\n'
         return (str)
 
     def area(self):
