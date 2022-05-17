@@ -10,7 +10,7 @@ class Node:
         args: data = int to go into node
         next_node = points to next node
         """
-        if type(data) == int:
+        if isinstance(data, int):
             self.__data = data
         else:
             TypeError("data must be an integer")
@@ -31,7 +31,7 @@ class Node:
         """
         sets value __data for node
         """
-        if type(value) == int:
+        if isinstance(value, int):
             self.__data = value
         else:
             TypeError("data must be an integer")
