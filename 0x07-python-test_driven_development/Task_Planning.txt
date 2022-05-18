@@ -1,0 +1,18 @@
+Initial task documentation per task.
+Task 0. Integers addition
+MODULE DOCUMENTATION:
+The Module is designed supply 1 function for use, the add_integer function
+FUNCTION DOCUMENTATION:
+The function recieves 2 integers and adds them together, and returns the value.
+must be integers (will type check)
+Can accept floats, will convert to integers if so.
+TEST CASES:
+ > send through 2 integers (positive)
+ > send through 2 integers (mixed)
+ > send through 2 integers (negative)
+ > send through incorrect type (string) (both spot a and b)
+ > send through incorrect type (list of integers)
+ > send through Null Values (both spot a and b)
+ > send through very large numbers
+ > send through chars cast as int and float
+ > send through words cast as int and float

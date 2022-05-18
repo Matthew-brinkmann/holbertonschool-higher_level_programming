@@ -1,0 +1,66 @@
+The ``0-add_integer`` module
+======================
+
+Using ``add_integer(a, b=98)``
+-------------------
+
+
+Import function from module:
+      >>> from example import factorial
+
+Check for Documentation:
+      >>> mod_doc = __import__("0-add_integer").__doc__
+      >>> len(mod_doc) > 1
+      True
+
+      >>> func_doc = __import__("0-add_integer").add_integer.__doc__
+      >>> len(func_doc) > 1
+      True
+
+Now completing function tests:
+      >>> add_integer(1, 1)
+      2
+
+      >>> add_integer(5, -3)
+      2
+
+      >>> add_integer(-1, -4)
+      -5
+
+      >>> add_integer(1, "School")
+      Traceback (most recent call last):
+      ...
+      TypeError: b must be an integer
+
+      >>> add_integer("Holberton", 1)
+      Traceback (most recent call last):
+      ...
+      TypeError: a must be an integer
+
+      >>> add_integer([1, 1, 3], 1)
+      Traceback (most recent call last):
+      ...
+      TypeError: a must be an integer
+
+      >>> add_integer(None, 1)
+      Traceback (most recent call last):
+      ...
+      TypeError: a must be an integer
+
+      >>> add_integer(1, None)
+      Traceback (most recent call last):
+      ...
+      TypeError: b must be an integer
+
+      >>> add_integer(9999999999999999999999999, 1)
+      10000000000000000000000000
+
+      >>> add_integer(int("hol"))
+      Traceback (most recent call last):
+      ...
+      ValueError: invalid literal for int() with base 10: 'hol'
+
+      >>> add_integer(float("hol"))
+      Traceback (most recent call last):
+      ...
+      ValueError: could not convert string to float: 'h'
