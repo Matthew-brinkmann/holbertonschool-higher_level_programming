@@ -4,8 +4,8 @@
 ### About the project
 We are creating tests for functions to ensure that the functions are performing correctly
 
-```
-Tests ran using the following
+
+### Tests ran using the following
 
 ```
 python3 -m doctest ./tests/*
@@ -15,6 +15,8 @@ All modules and functions require documentation
 
 ```
 python3 -c 'print(__import__("my_module").__doc__)'
+```
+```
 python3 -c 'print(__import__("my_module").my_function.__doc__)'
 ```
 ## :computer: Technical
