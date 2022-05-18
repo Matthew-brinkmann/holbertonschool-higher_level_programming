@@ -11,7 +11,7 @@ We are creating tests for functions to ensure that the functions are performing 
 python3 -m doctest ./tests/*
 ```
 
-All modules and functions require documentation
+### All modules and functions require documentation
 
 ```
 python3 -c 'print(__import__("my_module").__doc__)'
