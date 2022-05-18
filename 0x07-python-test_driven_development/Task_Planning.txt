@@ -54,4 +54,6 @@ TEST CASES:
   > send through empty matrix
  > send through an empy function call
  > send through a function call with only 1 parameter
+ > send through correctly formatted matrix and div (positive)
+ > send through correctly formatted martix and div (negative)
 --------------------------------------
