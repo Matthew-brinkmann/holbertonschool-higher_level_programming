@@ -1,11 +1,16 @@
 Initial task documentation per task.
-------------------------------------
+--------------------------------------
+Thoughts for each task:
+
+ > Should we be testing numbers by the python 'inf' (infinity), if so, how??
+ and what is the expected result (num / 'inf') or (num * 'inf') is what??
+--------------------------------------
 Task 0. Integers addition
 
 FUNCTION:
 def add_integer(a, b=98):
 MODULE DOCUMENTATION:
-The Module is designed supply 1 function for use, the add_integer function
+The Module is designed to supply 1 function for use, the add_integer function
 FUNCTION DOCUMENTATION:
 The function recieves 2 integers and adds them together, and returns the value.
 must be integers (will type check)
@@ -22,16 +27,31 @@ TEST CASES:
  > send through words cast as int and float
 
 --------------------------------------
-------------------------------------
+--------------------------------------
 Task 1. Divide a matrix
 
 FUNCTION:
 def matrix_divided(matrix, div):
 MODULE DOCUMENTATION:
-
+This moduel is designed to supply 1 funcion for use, the matrix_divided function
 FUNCTION DOCUMENTATION:
-
+Function recieves a matrix(matrix) and a number to divide(div) each matrix item by.
+Matrix items must be int or float and can be negative
+Each matrix row must be the same size
+Div must be int or float
+div can't be 0
+results must be 2 decimal places
 TEST CASES:
- > 
-
+ > Send through corretly formatted matrix with:
+  > Send through Div (positive)
+  > Send through Div (Negative)
+  > Send through Div (zero)
+  > send through Div (character/string)
+ > send through correctly formatted div with:
+  > send through matrix with negative numbers
+  > send through matrix with chars/string
+  > send through matrix with different size rows
+  > send through empty matrix
+ > send through an empy function call
+ > send through a function call with only 1 parameter
 --------------------------------------
