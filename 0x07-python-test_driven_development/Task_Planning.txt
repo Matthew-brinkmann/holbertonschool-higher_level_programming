@@ -2,6 +2,8 @@ Initial task documentation per task.
 ------------------------------------
 Task 0. Integers addition
 
+FUNCTION:
+def add_integer(a, b=98):
 MODULE DOCUMENTATION:
 The Module is designed supply 1 function for use, the add_integer function
 FUNCTION DOCUMENTATION:
@@ -18,5 +20,18 @@ TEST CASES:
  > send through very large numbers
  > send through chars cast as int and float
  > send through words cast as int and float
+
+--------------------------------------
+------------------------------------
+Task 1. Divide a matrix
+
+FUNCTION:
+def matrix_divided(matrix, div):
+MODULE DOCUMENTATION:
+
+FUNCTION DOCUMENTATION:
+
+TEST CASES:
+ > 
 
 --------------------------------------
