@@ -5,13 +5,13 @@
 We are creating tests for functions to ensure that the functions are performing correctly
 
 
-### Tests ran using the following
+### :microscope: Tests ran using the following
 
 ```
 python3 -m doctest ./tests/*
 ```
 
-### All modules and functions require documentation
+### :books: All modules and functions require documentation
 
 ```
 python3 -c 'print(__import__("my_module").__doc__)'
