@@ -1,5 +1,7 @@
 Initial task documentation per task.
+------------------------------------
 Task 0. Integers addition
+
 MODULE DOCUMENTATION:
 The Module is designed supply 1 function for use, the add_integer function
 FUNCTION DOCUMENTATION:
@@ -16,3 +18,5 @@ TEST CASES:
  > send through very large numbers
  > send through chars cast as int and float
  > send through words cast as int and float
+
+--------------------------------------
