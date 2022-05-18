@@ -6,7 +6,7 @@ Using ``add_integer(a, b=98)``
 
 
 Import function from module:
-      >>> from example import factorial
+      >>> add_integer = __import__('0-add_integer').add_integer
 
 Check for Documentation:
       >>> mod_doc = __import__("0-add_integer").__doc__
@@ -61,6 +61,11 @@ Now completing function tests:
       ValueError: invalid literal for int() with base 10: 'hol'
 
       >>> add_integer(float("hol"))
+      Traceback (most recent call last):
+      ...
+      ValueError: could not convert string to float: 'hol'
+
+      >>> add_integer(float("h"))
       Traceback (most recent call last):
       ...
       ValueError: could not convert string to float: 'h'
