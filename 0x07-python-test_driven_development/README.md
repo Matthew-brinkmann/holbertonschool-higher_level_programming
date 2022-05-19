@@ -48,6 +48,8 @@ python3 -c 'print(__import__("my_module").my_function.__doc__)'
   * Function to find and return the max integer in a list of integers
   * Tests are created using the UNITTEST module
 
+:heavy_exclamation_mark: all tests will test that there is documentation for module and functions.
+
 :heavy_exclamation_mark: Tests are created using the docutest module unless otherwise stated.
 
 :heavy_exclamation_mark: Tests are stored in the directory /tests
