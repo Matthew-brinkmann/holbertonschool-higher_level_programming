@@ -21,6 +21,10 @@ def text_indentation(text):
                 continue
             else:
                 lastCharModified = False
+        if ch == "\n":
+                print()
+                lastCharModified = True
+                continue
         if ch == "." or ch == ":" or ch == "?":
             lastCharModified = True
             print(ch)

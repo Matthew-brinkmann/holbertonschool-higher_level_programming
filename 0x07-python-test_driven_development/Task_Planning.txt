@@ -115,4 +115,5 @@ TEST CASES:
  > send an int
  > send None
  > send one word
+ > send string with newLine in middle of spaces
 --------------------------------------
