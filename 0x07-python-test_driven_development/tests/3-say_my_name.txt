@@ -1,0 +1,46 @@
+The ``3-say_my_name.py`` module
+======================
+
+Using `` say_my_name(first_name, last_name=""):``
+-------------------
+
+
+Import function from module:
+      >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Check for Documentation:
+      >>> mod_doc = __import__("3-say_my_name").__doc__
+      >>> len(mod_doc) > 1
+      True
+
+      >>> func_doc = __import__("3-say_my_name").say_my_name.__doc__
+      >>> len(func_doc) > 1
+      True
+
+Now completing function tests:
+      >>> say_my_name("John", "Smith")
+      My name is John Smith
+
+      >>> say_my_name("John")
+      My name is John 
+
+      >>> say_my_name(1)
+      Traceback (most recent call last):
+      ...
+      TypeError: first_name must be a string
+
+      >>> say_my_name("john", 1)
+      Traceback (most recent call last):
+      ...
+      TypeError: last_name must be a string
+
+      >>> say_my_name(None, "doe")
+      Traceback (most recent call last):
+      ...
+      TypeError: first_name must be a string
+
+      >>> say_my_name(chr(98), "Doe")
+      My name is b Doe
+
+      >>> say_my_name('a', 'b')
+      My name is a b
