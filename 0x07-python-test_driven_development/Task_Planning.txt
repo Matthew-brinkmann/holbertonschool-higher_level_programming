@@ -88,12 +88,11 @@ FUNCTION DOCUMENTATION:
 function that prints a square with the character #
 size is the size length of the square
 size must be an integer,
-size must be greater than 0
+size must be greater than or equal to 0
 TEST CASES:
  > Send through a small int
  > Send through a slightly bigger int
  > send through a float
  > send through a string
  > send through a neg number
- > send through decimal values of an ASCII character
 --------------------------------------

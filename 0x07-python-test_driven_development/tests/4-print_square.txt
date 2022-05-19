@@ -1,0 +1,54 @@
+The ``4-print_square`` module
+======================
+
+Using `` say_my_name(first_name, last_name=""):``
+-------------------
+
+
+Import function from module:
+      >>> print_square = __import__('4-print_square').print_square
+
+Check for Documentation:
+      >>> mod_doc = __import__("4-print_square").__doc__
+      >>> len(mod_doc) > 1
+      True
+
+      >>> func_doc = __import__("4-print_square").print_square.__doc__
+      >>> len(func_doc) > 1
+      True
+
+Now completing function tests:
+
+      >>> print_square(3)
+      ###
+      ###
+      ###
+
+      >>> print_square(10)
+      ##########
+      ##########
+      ##########
+      ##########
+      ##########
+      ##########
+      ##########
+      ##########
+      ##########
+      ##########
+
+      >>> print_square(0)
+
+      >>> print_square(float(1))
+      Traceback (most recent call last):
+      ...
+      TypeError: size must be an integer
+
+      >>> print_square('s')
+      Traceback (most recent call last):
+      ...
+      TypeError: size must be an integer
+
+      >>> print_square(-1)
+      Traceback (most recent call last):
+      ...
+      ValueError: size must be >= 0
