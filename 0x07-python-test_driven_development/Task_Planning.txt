@@ -135,6 +135,5 @@ TEST CASES:
  > sent a tuple of ints
  > send a blank list
  > send None
- > send empty list
  > send list with letters
 --------------------------------------
