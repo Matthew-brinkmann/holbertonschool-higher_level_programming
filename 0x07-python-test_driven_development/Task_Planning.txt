@@ -77,3 +77,23 @@ TEST CASES:
  > send through ASCII values as character
  > send through single letter for first and last name
 --------------------------------------
+--------------------------------------
+Task 3. Print square
+
+FUNCTION:
+def print_square(size):
+MODULE DOCUMENTATION:
+This module is designed to supply 1 funcion for use, the print_square function.
+FUNCTION DOCUMENTATION:
+function that prints a square with the character #
+size is the size length of the square
+size must be an integer,
+size must be greater than 0
+TEST CASES:
+ > Send through a small int
+ > Send through a slightly bigger int
+ > send through a float
+ > send through a string
+ > send through a neg number
+ > send through decimal values of an ASCII character
+--------------------------------------
