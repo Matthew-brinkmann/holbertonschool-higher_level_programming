@@ -96,3 +96,18 @@ TEST CASES:
  > send through a string
  > send through a neg number
 --------------------------------------
+--------------------------------------
+Task 4. Text indentation
+
+FUNCTION:
+def text_indentation(text):
+MODULE DOCUMENTATION:
+This module is designed to supply 1 funcion for use
+the text_indentation function.
+FUNCTION DOCUMENTATION:
+function that prints a text with 2 new lines after each of these characters: ., ? and :
+text must be a string
+There should be no space at the beginning or at the end of each printed line
+TEST CASES:
+
+--------------------------------------
