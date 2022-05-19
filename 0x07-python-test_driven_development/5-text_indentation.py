@@ -14,20 +14,40 @@ def text_indentation(text):
     '''
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    lastCharModified = True
+    lastCharSpace = False
+    isStartOfLine = True
+    spaceCounter = 0
+    newStr = ""
     for ch in text:
-        if lastCharModified is True:
+        if isStartOfLine is True:
             if ch == " ":
                 continue
             else:
-                lastCharModified = False
-        if ch == "\n":
-                print()
-                lastCharModified = True
+                isStartOfLine = False
+        if lastCharSpace is True:
+            if ch == " ":
+                spaceCounter += 1
                 continue
+            elif ch == "\n":
+                isStartOfLine = True
+                lastCharSpace = False
+                newStr += ch
+                spaceCounter = 0
+                continue
+            else:
+                lastCharSpace = False
+                newStr += (" " * spaceCounter)
+                spaceCounter = 0
         if ch == "." or ch == ":" or ch == "?":
-            lastCharModified = True
-            print(ch)
-            print()
+            newStr += ch
+            newStr += "\n\n"
+            isStartOfLine = True
+        elif ch == " ":
+            spaceCounter += 1
+            lastCharSpace = True
         else:
-            print(ch, end="")
+            if ch == "\n":
+                isStartOfLine = True
+            newStr += ch
+
+    print(newStr, end="")

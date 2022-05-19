@@ -116,4 +116,5 @@ TEST CASES:
  > send None
  > send one word
  > send string with newLine in middle of spaces
+ > send string with newLine in middle and extra spaces between words
 --------------------------------------

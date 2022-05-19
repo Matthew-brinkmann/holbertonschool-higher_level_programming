@@ -74,8 +74,15 @@ Now completing function tests:
       <BLANKLINE>
 
       >>> text_indentation("Hello \n . How are you?")
-      Hello 
+      Hello
       .
       <BLANKLINE>
       How are you?
+      <BLANKLINE>
+
+      >>> text_indentation("Hello \n . How   are   you?")
+      Hello
+      .
+      <BLANKLINE>
+      How   are   you?
       <BLANKLINE>
