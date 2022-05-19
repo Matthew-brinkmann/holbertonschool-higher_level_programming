@@ -1,0 +1,67 @@
+The ``5-text_indentation`` module
+======================
+
+Using ``def text_indentation(text):``
+-------------------
+
+
+Import function from module:
+      >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Check for Documentation:
+      >>> mod_doc = __import__("5-text_indentation").__doc__
+      >>> len(mod_doc) > 1
+      True
+
+      >>> func_doc = __import__("5-text_indentation").text_indentation.__doc__
+      >>> len(func_doc) > 1
+      True
+
+Now completing function tests:
+      >>> text_indentation("hello. how are you? i am good: you? fine.")
+      hello.
+      <BLANKLINE>
+      how are you?
+      <BLANKLINE>
+      i am good:
+      <BLANKLINE>
+      you?
+      <BLANKLINE>
+      fine.
+      <BLANKLINE>
+
+      >>> text_indentation("hello. how are you? i am good: you? fine")
+      hello.
+      <BLANKLINE>
+      how are you?
+      <BLANKLINE>
+      i am good:
+      <BLANKLINE>
+      you?
+      <BLANKLINE>
+      fine
+
+      >>> text_indentation("hello.    how are you?  i am good:   you?    fine.")
+      hello.
+      <BLANKLINE>
+      how are you?
+      <BLANKLINE>
+      i am good:
+      <BLANKLINE>
+      you?
+      <BLANKLINE>
+      fine.
+      <BLANKLINE>
+
+      >>> text_indentation(1)
+      Traceback (most recent call last):
+      ...
+      TypeError: text must be a string
+
+      >>> text_indentation(None)
+      Traceback (most recent call last):
+      ...
+      TypeError: text must be a string
+
+      >>> text_indentation("hello")
+      hello
