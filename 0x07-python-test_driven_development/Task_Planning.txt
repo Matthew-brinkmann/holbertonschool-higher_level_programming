@@ -57,3 +57,15 @@ TEST CASES:
  > send through correctly formatted matrix and div (positive)
  > send through correctly formatted martix and div (negative)
 --------------------------------------
+--------------------------------------
+Task 2. Say my name
+
+FUNCTION:
+def say_my_name(first_name, last_name=""):
+MODULE DOCUMENTATION:
+This moduel is designed to supply 1 funcion for use, the say_my_name function.
+FUNCTION DOCUMENTATION:
+
+TEST CASES:
+ > 
+--------------------------------------
