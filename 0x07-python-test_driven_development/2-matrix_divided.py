@@ -22,10 +22,10 @@ def matrix_divided(matrix, div):
         raise ZeroDivisionError("division by zero")
 
     ret = []
-    try:
-        first_len = len(matrix[0])
-    except IndexError:
+    if len(matrix) == 0:
         return (ret)
+    else:
+        first_len = len(matrix[0])
 
     if type(matrix) is not list:
         raise TypeError(
