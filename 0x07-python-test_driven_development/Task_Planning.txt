@@ -110,5 +110,9 @@ text must be a string
 There should be no space at the beginning or at the end of each printed line
 TEST CASES:
  > send a string (ensuring end and start of lines are ot spaces)
+ > string that doesn't end in a fullstop
+ > string with multiple spaces at start of sentences.
  > send an int
+ > send None
+ > send one word
 --------------------------------------
