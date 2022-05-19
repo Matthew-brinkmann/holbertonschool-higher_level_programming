@@ -1,0 +1,71 @@
+The ``2-matrix_divide.py`` module
+======================
+
+Using `` matrix_divided(matrix, div):``
+-------------------
+
+
+Import function from module:
+      >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Check for Documentation:
+      >>> mod_doc = __import__("2-matrix_divided").__doc__
+      >>> len(mod_doc) > 1
+      True
+
+      >>> func_doc = __import__("2-matrix_divided").matrix_divided.__doc__
+      >>> len(func_doc) > 1
+      True
+
+Now completing function tests:
+      >>> matrix = [[1, 2, 3], [4, 5, 6]]
+      >>> matrix_divided(matrix, 2)
+      [[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]]
+      >>> matrix
+      [[1, 2, 3], [4, 5, 6]]
+
+      >>> matrix = [[1, 2, 3], [4, 5, 6]]
+      >>> matrix_divided(matrix, -2)
+      [[-0.5, -1.0, -1.5], [-2.0, -2.5, -3.0]]
+      >>> matrix
+      [[1, 2, 3], [4, 5, 6]]
+
+      >>> matrix = [[1, 2, 3], [4, 5, 6]]
+      >>> matrix_divided(matrix, 0)
+      Traceback (most recent call last):
+      ...
+      ZeroDivisionError: division by zero
+
+      >>> matrix = [[1, 2, 3], [4, 5, 6]]
+      >>> matrix_divided(matrix, 'h')
+      Traceback (most recent call last):
+      ...
+      TypeError: div must be a number
+
+
+      >>> matrix = [[-1, 2, -3], [4, -5, 6]]
+      >>> matrix_divided(matrix, 2)
+      [[-0.5, 1.0, -1.5], [2.0, -2.5, 3.0]]
+      >>> matrix
+      [[-1, 2, -3], [4, -5, 6]]
+
+      >>> matrix = [[1, 2, 3], [4, 'h', 6]]
+      >>> matrix_divided(matrix, 2)
+      Traceback (most recent call last):
+      ...
+      TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+      >>> matrix_divided()
+      Traceback (most recent call last):
+      ...
+      TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+      >>> matrix = [[1, 2, 3], [4, 5, 6]]
+      >>> matrix_divided(matrix)
+      Traceback (most recent call last):
+      ...
+      TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+      >>> matrix = []
+      >>> matrix_divided(matrix, 2)
+      []
