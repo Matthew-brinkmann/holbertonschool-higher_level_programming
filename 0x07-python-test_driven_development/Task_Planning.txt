@@ -74,7 +74,6 @@ TEST CASES:
  > send through different value int
  > send through string in a list
  > send through None as first Name
- > send through newLine Character as first name
  > send through ASCII values as character
  > send through single letter for first and last name
 --------------------------------------
