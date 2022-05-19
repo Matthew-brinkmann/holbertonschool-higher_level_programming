@@ -118,3 +118,23 @@ TEST CASES:
  > send string with newLine in middle of spaces
  > send string with newLine in middle and extra spaces between words
 --------------------------------------
+--------------------------------------
+Task 5. Max integer - Unittest
+
+FUNCTION:
+def max_integer(list=[]):
+MODULE DOCUMENTATION:
+Module to find the max integer in a list
+FUNCTION DOCUMENTATION:
+Function to find and return the max integer in a list of integers
+If the list is empty, the function returns None
+TEST CASES:
+ > send positive int with largest int at start, then middle, then end
+ > send mix of positie and negative
+ > send only negative ints
+ > sent a tuple of ints
+ > send a blank list
+ > send None
+ > send empty list
+ > send list with letters
+--------------------------------------
