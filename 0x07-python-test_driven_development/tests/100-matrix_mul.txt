@@ -18,9 +18,10 @@ Check for Documentation:
       True
 
 Now completing function tests:
-      >>>m_a = [[1, 2], [3, 4]]
-      >>>m_b = [[1, 2], [3, 4]]
-      >>>matrix_mul(m_a, m_b)
+
+      >>> m_a = [[1, 2], [3, 4]]
+      >>> m_b = [[1, 2], [3, 4]]
+      >>> matrix_mul(m_a, m_b)
       [[7, 10], [15, 22]]
 
       >>> m_a = []
@@ -45,7 +46,7 @@ Now completing function tests:
       >>> matrix_mul(m_a, m_b)
       Traceback (most recent call last):
       ...
-      TypeError: each row of m_a must should be of the same size
+      TypeError: each row of m_a must be of the same size
 
       >>> m_a = [[1, 2]]
       >>> m_b = [[1, 2], [2, 3], [4, 5]]
@@ -58,3 +59,8 @@ Now completing function tests:
       Traceback (most recent call last):
       ...
       TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+      >>> m_a = [[2.5, 2.8], [3.1, 4.9]]
+      >>> m_b = [[0.2, 2.6], [5.3, 7.4]]
+      >>> matrix_mul(m_a, m_b)
+      [[15.339999999999998, 27.22], [26.590000000000003, 44.32000000000001]]
