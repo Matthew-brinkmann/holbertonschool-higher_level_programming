@@ -137,3 +137,40 @@ TEST CASES:
  > send None
  > send list with letters
 --------------------------------------
+--------------------------------------
+Task 6. Matrix multiplication
+
+FUNCTION:
+def matrix_mul(m_a, m_b):
+MODULE DOCUMENTATION:
+Module to return the product of 2 matrices
+contains seperate functions for data validation
+4 seperate functions for type validation
+2 seperate functions for value validation
+FUNCTION DOCUMENTATION:
+function that multiplies 2 matrices:
+(m_a) * (m_b)
+This is the entry intou our function, however most of the exception checking
+is done in other functions, if all exceptions pass, then this function
+runs the multiplication.
+does check if the valuse (m_a) and (m_b) are lists.
+------
+checks if a list is a list of lists (aka a matrix)
+------
+checks if the matrix, or any of it's sub lists are empty
+------
+checks if the matrix only contains integers
+------
+checks if all rows are equal in matrix
+------
+checks if 2 matrix can be multiplied
+number of rows in 1 matrix is equal to columns in other matrix.
+TEST CASES:
+ > correctly formatted data
+ > send through non_list formatted matrix
+ > send through a matrix with 1 empy list
+ > send through matrix with incorrect data types
+ > send through miss-matched matrix sizes
+ > send through non-rectangle data.
+ > send through matrix with 2 problems, to ensure data is being validated in the correct order.
+--------------------------------------
