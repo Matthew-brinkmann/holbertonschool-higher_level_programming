@@ -12,19 +12,6 @@ class Rectangle:
         self.width = width
         self.height = height
 
-    def __str__(self):
-        """ returns str representaion of class"""
-        string = ""
-        if self.width == 0 or self.height == 0:
-            return (string)
-
-        for row in range(self.height):
-            for col in range(self.width):
-                string += '#'
-            if row != self.height - 1:
-                string += '\n'
-        return (string)
-
     @property
     def width(self):
         """ getter for width attribute"""
