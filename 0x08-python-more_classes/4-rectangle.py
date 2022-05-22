@@ -30,6 +30,7 @@ class Rectangle:
         string = "Rectangle (" + str(self.width) + ", "
         string += str(self.height) + ")"
         return (string)
+
     @property
     def width(self):
         """ getter for width attribute"""
