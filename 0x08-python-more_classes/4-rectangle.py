@@ -30,7 +30,7 @@ class Rectangle:
         string = ""
         if self.width == 0 or self.height == 0:
             return (string)
-        string += "Rectangle (" + str(self.width) + ", "
+        string += "Rectangle(" + str(self.width) + ", "
         string += str(self.height) + ")"
         return (string)
 
