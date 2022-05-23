@@ -2,36 +2,102 @@
 """
 function to answer n-queens problem
 """
-from sys import argv
+import sys
 
 class Solutions_tracker:
     """ the solutions object"""
-    row_used = []
-    col_used = []
+
+    savedGuess = []
 
     def __init__(self, row, col):
+        self.__rowUsed = []
+        self.__colUsed = []
         self.row_used = row
         self.col_used = col
+        self.current_guess = [row, col]
 
+    def __del__(self):
+        Solutions_tracker.savedGuess = []
     @property
     def row_used(self):
         """ getter for row_used attribute"""
         return (self.__rowUsed)
 
-    @width.setter
+    @row_used.setter
     def row_used(self, value):
         """ setter for row_used attribute"""
-        self.__rowUsed = __rowUsed.append(value)
+        self.__rowUsed.append(value)
 
     @property
     def col_used(self):
         """ getter for col_used attribute"""
         return (self.__colUsed)
 
-    @width.setter
+    @col_used.setter
     def col_used(self, value):
         """ setter for col_used attribute"""
-        self.__colUsed = __colUsed.append(value)
+        self.__colUsed.append(value)
+
+    @property
+    def current_guess(self):
+        """ getter for currenGuess attribute"""
+        return (self.__currentGuess)
+
+    @current_guess.setter
+    def current_guess(self, value):
+        """ setter for currentGuess attribute"""
+        self.__currentGuess = value
+        self.row_used = value[0]
+        self.col_used = value[1]
+
+    def reset(self, row, col):
+        self.__rowUsed = []
+        self.__colUsed = []
+        self.row_used = row
+        self.col_used = col
+        self.current_guess = [row, col]
+
+def sort_bad_rows(num, attempt, chess_board):
+    i = 0
+
+    if len(chess_board) == 0:
+        return
+    for j in attempt.row_used:
+        i = 0
+        while i < len(chess_board):
+            try:
+                if chess_board[i][0] == j:
+                    chess_board.pop(i)
+                    continue
+            except IndexError:
+                break
+            i += 1
+    for l in attempt.col_used:
+        i = 0
+        while len(chess_board) > 0:
+            try:
+                if chess_board[i][1] == l:
+                    chess_board.pop(i)
+                    continue
+            except IndexError:
+                break
+            i += 1
+
+
+def sort_diagonal(num, attempt, chess_board):
+    pass
+
+
+def build_chess_board(num):
+    chess_board = []
+    for i in range(num):
+        for k in range(num):
+            new_ele=[]
+            new_ele.append(i)
+            new_ele.append(k)
+            chess_board.append(new_ele)
+    return (chess_board)
+
 
 args = sys.argv
 
@@ -46,32 +112,21 @@ if num < 4:
     print("N must be at least 4")
     exit(1)
 
+for guess in range(num):
+    chess_board = build_chess_board(num)
+    attempt = Solutions_tracker(0, guess)
+    while len(attempt.savedGuess) <= num:
+        attempt.savedGuess.append(attempt.current_guess)
+        sort_bad_rows(num, attempt, chess_board)
+        sort_diagonal(num, attempt, chess_board)
+        if len(chess_board) == 0:
+            break
+        else:
+            attempt.current_guess = chess_board[0]
+    if len(attempt.savedGuess) == num:
+        print(attempt.savedGuess)
+    attempt.savedGuess = []
 
-chess_board = []
-for i in range(num):
-    for k in range(num):
-        new_ele=[]
-        new_ele.append(i)
-        new_ele.append(k)
-        chess_board.append(new_ele)
-#- create the matix with all numbers [0 , 0] to [num, num]
-print(chess_board)
-# put this in a loop to loop through all initial guess stage (0,0 -> 0, num)
-guess_stage = 0
-attempt = Solutions_tracker(0, guess_stage)
-# check if row or column has the guess numbers in it
-while len(chess_board) > 0:
-    if (len(chess_board) <= i):
-        break
-    for j in col:
-        for test in range(num):
-            if chess_board[i] == [j, test]:
-                chess_board.pop(i)
-    for l in row:
-        for test1 in range(num):
-            if chess_board[i] == [test1, l]:
-                chess_board.pop(i)
-    i += 1
 # still need to program the diagonal search function
 #[x++, y++] and [x++, y--] and [x--, y++] and [x--, y--]
 #^^^ there may and probably is an easer way to do this^^^
