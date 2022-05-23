@@ -27,7 +27,10 @@ class Rectangle:
 
     def __repr__(self):
         """ return official sttring representaion of class"""
-        string = "Rectangle (" + str(self.width) + ", "
+        string = ""
+        if self.width == 0 or self.height == 0:
+            return (string)
+        string += "Rectangle (" + str(self.width) + ", "
         string += str(self.height) + ")"
         return (string)
 
