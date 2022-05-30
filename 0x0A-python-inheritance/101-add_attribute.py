@@ -3,6 +3,7 @@
 Module to add attribute to compatible classes/ objects
 """
 
+
 def add_attribute(obj, name, value):
     """
     runs check on data, then if object is compatible,
