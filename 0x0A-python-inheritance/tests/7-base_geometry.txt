@@ -1,0 +1,50 @@
+The ``7-base_geometry`` module
+======================
+
+Using ``BaseGeometry``
+-------------------
+
+
+Import function from module:
+      >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Check for Documentation:
+      >>> mod_doc = __import__("7-base_geometry").__doc__
+      >>> len(mod_doc) > 1
+      True
+
+      >>> class_doc = __import__("7-base_geometry").BaseGeometry.__doc__
+      >>> len(class_doc) > 1
+      True
+
+Now completing function tests:
+    >>> bg = BaseGeometry()
+
+    >>> bg.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
+    >>> bg.integer_validator("my_int", 12)
+
+    >>> bg.integer_validator("width", 89)
+
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+    ...
+    TypeError: name must be an integer
+
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: age must be greater than 0
+
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
+    ...
+    ValueError: distance must be greater than 0
+
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
