@@ -13,8 +13,6 @@ class Square(Rectangle):
     def __init__(self, size):
         """
         init for square, using inherited data_validator
-        and setting, using __init___ for parent class Rectangle
-        so we can use the __str__ functions
         """
         self.integer_validator("size", size)
         self.__size = size
