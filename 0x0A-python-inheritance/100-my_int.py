@@ -3,6 +3,7 @@
 module for myInt class to cause some trouble
 """
 
+
 class MyInt(int):
     """
     reverse  the == and != functionality
