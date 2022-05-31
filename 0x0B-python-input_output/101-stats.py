@@ -44,9 +44,12 @@ relating to th e
         checks if attribute exists and updates fields if required
         """
         if Code in self.eCodes:
-            value = getattr(self, self.code_to_attr(Code)) + 1
-            setattr(self, self.code_to_attr(Code), value)
-            self.total_size += size
+            try:
+                self.total_size += int(size)
+                value = getattr(self, self.code_to_attr(Code)) + 1
+                setattr(self, self.code_to_attr(Code), value)
+            except Exception:
+                return
         else:
             return
 
@@ -65,7 +68,10 @@ try:
     info.lineCount += 1
     while currLine != "":
         tokens = currLine.split()
-        info.code_check(tokens[-2], int(tokens[-1]))
+        if len(tokens) < 2:
+            currLine = sys.stdin.readline()
+            continue
+        info.code_check(tokens[-2], tokens[-1])
         if (info.lineCount % 10) == 0:
             print(info)
         currLine = sys.stdin.readline()
