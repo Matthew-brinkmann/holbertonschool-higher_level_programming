@@ -30,13 +30,12 @@ relating to th e
         """
         if self.total_size == 0:
             return ("")
-        retStr = "File size: " + str(self.total_size) + "\n"
+        retStr = f"File size: {self.total_size}\n"
         for code in self.eCodes:
             value = getattr(self, self.code_to_attr(code))
             if value == 0:
                 continue
-            retStr += code + ": "
-            retStr += str(getattr(self, self.code_to_attr(code))) + "\n"
+            retStr += f"{code}: {getattr(self, self.code_to_attr(code))}\n"
         retStr = retStr[:-1]
         return (retStr)
 
