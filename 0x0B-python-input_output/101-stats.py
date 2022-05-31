@@ -30,9 +30,11 @@ relating to th e
         """
         retStr = f"File size: {self.total_size}\n"
         for code in self.eCodes:
-            retStr += f"{code}: {getattr(self, self.code_to_attr(code))}"
-            if code != self.eCodes[-1]:
-                retStr += "\n"
+            value = getattr(self, self.code_to_attr(code))
+            if value == 0:
+                continue
+            retStr += f"{code}: {getattr(self, self.code_to_attr(code))}\n"
+        retStr = retStr[:-1]
         return (retStr)
 
     def code_check(self, Code, size):
