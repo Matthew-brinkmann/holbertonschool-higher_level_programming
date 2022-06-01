@@ -76,5 +76,6 @@ try:
             print(info)
         currLine = sys.stdin.readline()
         info.lineCount += 1
+    print(info)
 except KeyboardInterrupt:
     print(info)
