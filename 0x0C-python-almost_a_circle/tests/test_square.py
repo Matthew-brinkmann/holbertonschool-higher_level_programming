@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 """
-Contains tests for Rectangle class - Task 2
-Focus is on:
-- setting private instance attributes in the constructor using
-  getters and setters
-- calling super()__init__() to set public instance id attribute
+Contains tests for Square class
 """
 
 import unittest
@@ -14,43 +10,44 @@ import io
 from contextlib import redirect_stdout
 
 from models.base import Base
-from models import rectangle
-Rectangle = rectangle.Rectangle
+from models.rectangle import Rectangle
+from models import square
+Square = square.Square
 
 
-class TestRectangleDocs(unittest.TestCase):
+class TestSquareDocs(unittest.TestCase):
     """Tests for documentation of class"""
 
     @classmethod
     def setUpClass(cls):
         """Set up for the doc tests"""
-        cls.rect_funcs = inspect.getmembers(Rectangle, inspect.isfunction)
+        cls.square_funcs = inspect.getmembers(Square, inspect.isfunction)
 
     def test_conformance_class(self):
         """Test that we conform to Pycodestyle."""
         style = pycodestyle.StyleGuide(quiet=True)
-        result = style.check_files(['models/rectangle.py'])
+        result = style.check_files(['models/square.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
     def test_conformance_test(self):
         """Test that we conform to Pycodestyle."""
         style = pycodestyle.StyleGuide(quiet=True)
-        result = style.check_files(['tests/test_rectangle.py'])
+        result = style.check_files(['tests/test_square.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
     def test_module_docstr(self):
         """Tests for docstring"""
-        self.assertTrue(len(rectangle.__doc__) >= 1)
+        self.assertTrue(len(square.__doc__) >= 1)
 
     def test_class_docstr(self):
         """Tests for docstring"""
-        self.assertTrue(len(Rectangle.__doc__) >= 1)
+        self.assertTrue(len(Square.__doc__) >= 1)
 
     def test_func_docstr(self):
         """Tests for docstrings in all functions"""
-        for func in self.rect_funcs:
+        for func in self.square_funcs:
             self.assertTrue(len(func[1].__doc__) >= 1)
 
 
@@ -61,10 +58,10 @@ class TestRectangle(unittest.TestCase):
     def setUpClass(cls):
         """ set up all r_ attributes for all tests """
         Base._Base__nb_objects = 0
-        cls.r_1 = Rectangle(1, 1)
-        cls.r_2 = Rectangle(4, 5)
-        cls.r_3 = Rectangle(1, 5, 1, 1, 88)
-        cls.r_4 = Rectangle(6, 6)
+        cls.r_1 = Square(1)
+        cls.r_2 = Square(4)
+        cls.r_3 = Square(1, 1, 1, 88)
+        cls.r_4 = Square(6)
 
     def test_properties(self):
         """Tests all setters and getters"""
@@ -96,70 +93,56 @@ class TestRectangle(unittest.TestCase):
     def test_too_many_args(self):
         """Tests entering too many args to instantiate object"""
         with self.assertRaises(TypeError):
-            r = Rectangle(1, 2, 3, 4, 5, 6)
+            r = Square(1, 2, 3, 4, 5, 6)
 
     def test_too_few_args(self):
         """Tests entering too few args to instantiate object"""
         with self.assertRaises(TypeError):
-            r = Rectangle()
+            r = Square()
 
     def test_width_typeerror(self):
         """Test non-int validation for width"""
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r = Rectangle("hello", 1)
+            r = Square("hello")
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r = Rectangle(True, 1)
-
-    def test_height_typeerror(self):
-        """Test non-int validation for height"""
-        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r = Rectangle(1, "hello")
-        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r = Rectangle(1, True)
+            r = Square(True)
 
     def test_x_typeerror(self):
         """Test non-int validation for x"""
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r = Rectangle(1, 1, "hello")
+            r = Square(1, "hello")
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r = Rectangle(1, 1, True)
+            r = Square(1, True)
 
     def test_y_typeerror(self):
         """Test non-int validation for y"""
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            r = Rectangle(1, 1, 1, "hello")
+            r = Square(1, 1, "hello")
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            r = Rectangle(1, 1, 1, True)
+            r = Square(1, 1, True)
 
     def test_width_valueerror(self):
         """Test int validation <= 0 for width"""
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            r = Rectangle(-1, 1)
+            r = Square(-1)
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            r = Rectangle(0, 1)
-
-    def test_height_valueerror(self):
-        """Test int validation <= 0 for height"""
-        with self.assertRaisesRegex(ValueError, "height must be > 0"):
-            r = Rectangle(1, -1)
-        with self.assertRaisesRegex(ValueError, "height must be > 0"):
-            r = Rectangle(1, 0)
+            r = Square(0)
 
     def test_x_valueerror(self):
         """Test int validation < 0 for x"""
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
-            r = Rectangle(1, 1, -1)
+            r = Square(1, -1)
 
     def test_y_valueerror(self):
         """Test int validation <= 0 for y"""
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
-            r = Rectangle(1, 1, 1, -1)
+            r = Square(1, 1, -1)
 
     def test_area(self):
         """test area"""
         self.assertEqual(self.r_1.area(), 1)
-        self.assertEqual(self.r_2.area(), 20)
-        self.assertEqual(self.r_3.area(), 5)
+        self.assertEqual(self.r_2.area(), 16)
+        self.assertEqual(self.r_3.area(), 1)
         self.assertEqual(self.r_4.area(), 36)
 
     def test_area_args(self):
@@ -176,7 +159,7 @@ class TestRectangle(unittest.TestCase):
         with io.StringIO() as buf, redirect_stdout(buf):
             self.r_2.display()
             output = buf.getvalue()
-            self.assertEqual(output, ("#" * 4 + "\n") * 5)
+            self.assertEqual(output, ("#" * 4 + "\n") * 4)
 
     def test_display_too_many_args(self):
         """Test display with too many args"""
@@ -185,8 +168,8 @@ class TestRectangle(unittest.TestCase):
 
     def test_str(self):
         """Test the __str__ method"""
-        self.assertEqual(str(self.r_1), "[Rectangle] (1) 10/10 - 1/1")
-        self.assertEqual(str(self.r_3), "[Rectangle] (88) 1/1 - 1/5")
+        self.assertEqual(str(self.r_1), "[Square] (1) 10/10 - 1")
+        self.assertEqual(str(self.r_3), "[Square] (88) 1/1 - 1")
 
     def test_xy_display(self):
         """Test display with xy"""
@@ -201,28 +184,28 @@ class TestRectangle(unittest.TestCase):
         with io.StringIO() as buf, redirect_stdout(buf):
             self.r_2.display()
             output = buf.getvalue()
-            self.assertEqual(output, "\n" * 4 + (" " * 8 + "#" * 4 + "\n") * 5)
+            self.assertEqual(output, "\n" * 4 + (" " * 8 + "#" * 4 + "\n") * 4)
 
     def test_update_args(self):
         """Testing the udpate method with *args"""
-        self.assertEqual(str(self.r_3), "[Rectangle] (88) 1/1 - 1/5")
+        self.assertEqual(str(self.r_3), "[Square] (88) 1/1 - 1")
         self.r_3.update(99)
-        self.assertEqual(str(self.r_3), "[Rectangle] (99) 1/1 - 1/5")
+        self.assertEqual(str(self.r_3), "[Square] (99) 1/1 - 1")
         self.r_3.update(99, 9)
-        self.assertEqual(str(self.r_3), "[Rectangle] (99) 1/1 - 9/5")
+        self.assertEqual(str(self.r_3), "[Square] (99) 1/1 - 9")
         self.r_3.update(99, 9, 9)
-        self.assertEqual(str(self.r_3), "[Rectangle] (99) 1/1 - 9/9")
+        self.assertEqual(str(self.r_3), "[Square] (99) 1/1 - 9")
         self.r_3.update(99, 9, 9, 9)
-        self.assertEqual(str(self.r_3), "[Rectangle] (99) 9/1 - 9/9")
+        self.assertEqual(str(self.r_3), "[Square] (99) 9/1 - 9")
         self.r_3.update(99, 9, 9, 9, 9)
-        self.assertEqual(str(self.r_3), "[Rectangle] (99) 9/9 - 9/9")
+        self.assertEqual(str(self.r_3), "[Square] (99) 9/9 - 9")
 
     def test_update_kwargs(self):
         """Testing the udpate method with *args"""
-        self.assertEqual(str(self.r_4), "[Rectangle] (3) 0/0 - 6/6")
+        self.assertEqual(str(self.r_4), "[Square] (3) 0/0 - 6")
         self.r_4.update(id=51)
-        self.assertEqual(str(self.r_4), "[Rectangle] (51) 0/0 - 6/6")
+        self.assertEqual(str(self.r_4), "[Square] (51) 0/0 - 6")
         self.r_4.update(x=4, y=9)
-        self.assertEqual(str(self.r_4), "[Rectangle] (51) 4/9 - 6/6")
-        self.r_4.update(width=7, id=52, height=9)
-        self.assertEqual(str(self.r_4), "[Rectangle] (52) 4/9 - 7/9")
+        self.assertEqual(str(self.r_4), "[Square] (51) 4/9 - 6")
+        self.r_4.update(width=7, id=52)
+        self.assertEqual(str(self.r_4), "[Square] (52) 4/9 - 7")
