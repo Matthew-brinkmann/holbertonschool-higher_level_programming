@@ -20,7 +20,7 @@ class Rectangle(Base):
 
     def __str__(self):
         """returns informal representation of string"""
-        retStr = f"[Rectangle] ({self.id}) "
+        retStr = f"[{self.__class__.__name__}] ({self.id}) "
         retStr += f"{self.x}/{self.y} - {self.width}/{self.height}"
         return (retStr)
 
