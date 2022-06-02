@@ -187,3 +187,18 @@ class TestRectangle(unittest.TestCase):
         """Test the __str__ method"""
         self.assertEqual(str(self.r_1), "[Rectangle] (1) 10/10 - 1/1")
         self.assertEqual(str(self.r_3), "[Rectangle] (88) 1/1 - 1/5")
+
+    def test_xy_display(self):
+        """Test display with xy"""
+        self.r_1.x = 2
+        self.r_1.y = 2
+        self.r_2.x = 8
+        self.r_2.y = 4
+        with io.StringIO() as buf, redirect_stdout(buf):
+            self.r_1.display()
+            output = buf.getvalue()
+            self.assertEqual(output, "\n" * 2 + (" " * 2 + "#\n"))
+        with io.StringIO() as buf, redirect_stdout(buf):
+            self.r_2.display()
+            output = buf.getvalue()
+            self.assertEqual(output, "\n" * 4 + (" " * 8 + "#" * 4 + "\n") * 5)
