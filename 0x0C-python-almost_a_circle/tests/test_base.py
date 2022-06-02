@@ -8,7 +8,6 @@ import unittest
 from models import base
 Base = base.Base
 
-
 class TestBaseDocs(unittest.TestCase):
     """ Tests for documentation of class"""
 
