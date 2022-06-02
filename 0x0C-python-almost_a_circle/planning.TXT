@@ -1,0 +1,6 @@
+Planning for each class and module + tests for each one:
+---BASE---
+
+---RECTANGLE---
+
+---SQUARE---
