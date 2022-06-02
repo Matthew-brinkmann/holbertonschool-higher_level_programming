@@ -202,3 +202,27 @@ class TestRectangle(unittest.TestCase):
             self.r_2.display()
             output = buf.getvalue()
             self.assertEqual(output, "\n" * 4 + (" " * 8 + "#" * 4 + "\n") * 5)
+
+    def test_update_args(self):
+        """Testing the udpate method with *args"""
+        self.assertEqual(str(self.r_3), "[Rectangle] (88) 1/1 - 1/5")
+        self.r_3.update(99)
+        self.assertEqual(str(self.r_3), "[Rectangle] (99) 1/1 - 1/5")
+        self.r_3.update(99, 9)
+        self.assertEqual(str(self.r_3), "[Rectangle] (99) 1/1 - 9/5")
+        self.r_3.update(99, 9, 9)
+        self.assertEqual(str(self.r_3), "[Rectangle] (99) 1/1 - 9/9")
+        self.r_3.update(99, 9, 9, 9)
+        self.assertEqual(str(self.r_3), "[Rectangle] (99) 9/1 - 9/9")
+        self.r_3.update(99, 9, 9, 9, 9)
+        self.assertEqual(str(self.r_3), "[Rectangle] (99) 9/9 - 9/9")
+
+    def test_update_kwargs(self):
+        """Testing the udpate method with *args"""
+        self.assertEqual(str(self.r_4), "[Rectangle] (3) 0/0 - 6/6")
+        self.r_4.update(id=51)
+        self.assertEqual(str(self.r_4), "[Rectangle] (51) 0/0 - 6/6")
+        self.r_4.update(x=4, y=9)
+        self.assertEqual(str(self.r_4), "[Rectangle] (51) 4/9 - 6/6")
+        self.r_4.update(width=7, id=52, height=9)
+        self.assertEqual(str(self.r_4), "[Rectangle] (52) 4/9 - 7/9")
