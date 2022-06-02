@@ -18,13 +18,23 @@ class Rectangle(Base):
         self.y = y
         super().__init__(id)
 
+    def __str__(self):
+        """returns informal representation of string"""
+        retStr = f"[Rectangle] ({self.id}) "
+        retStr += f"{self.x}/{self.y} - {self.width}/{self.height}"
+        return (retStr)
+
     def area(self):
         """ returns the area of the rectangle"""
         return (self.width * self.height)
 
     def display(self):
         """ prints rectangle to stdout"""
+        for offy in range(self.y):
+            print("")
         for row in range(self.height):
+            for offx in range(self.x):
+                print("", end=" ")
             for col in range(self.width):
                 print('#', end="")
             print("")

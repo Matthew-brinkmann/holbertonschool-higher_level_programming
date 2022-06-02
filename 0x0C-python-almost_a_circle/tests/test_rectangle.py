@@ -10,6 +10,8 @@ Focus is on:
 import unittest
 import inspect
 import pycodestyle
+import io
+from contextlib import redirect_stdout
 
 from models.base import Base
 from models import rectangle
@@ -164,3 +166,24 @@ class TestRectangle(unittest.TestCase):
         """Test too many args for area()"""
         with self.assertRaises(TypeError):
             r = self.r_1.area(1)
+
+    def test_basic_display(self):
+        """Test display"""
+        with io.StringIO() as buf, redirect_stdout(buf):
+            self.r_1.display()
+            output = buf.getvalue()
+            self.assertEqual(output, "#\n")
+        with io.StringIO() as buf, redirect_stdout(buf):
+            self.r_2.display()
+            output = buf.getvalue()
+            self.assertEqual(output, ("#" * 4 + "\n") * 5)
+
+    def test_display_too_many_args(self):
+        """Test display with too many args"""
+        with self.assertRaises(TypeError):
+            self.r_1.display(1)
+
+    def test_str(self):
+        """Test the __str__ method"""
+        self.assertEqual(str(self.r_1), "[Rectangle] (1) 10/10 - 1/1")
+        self.assertEqual(str(self.r_3), "[Rectangle] (88) 1/1 - 1/5")
