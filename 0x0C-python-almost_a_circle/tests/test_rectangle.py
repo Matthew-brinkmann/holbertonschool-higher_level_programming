@@ -55,36 +55,40 @@ class TestRectangleDocs(unittest.TestCase):
 class TestRectangle(unittest.TestCase):
     """ Tests functionality of class"""
 
+    @classmethod
+    def setUpClass(cls):
+        """ set up all r_ attributes for all tests """
+        Base._Base__nb_objects = 0
+        cls.r_1 = Rectangle(1, 1)
+        cls.r_2 = Rectangle(4, 5)
+        cls.r_3 = Rectangle(1, 5, 1, 1, 88)
+        cls.r_4 = Rectangle(6, 6)
+
     def test_properties(self):
         """Tests all setters and getters"""
-        Base._Base__nb_objects = 0
-        r_1 = Rectangle(1, 1)
-        self.assertEqual(r_1.width, 1)
-        self.assertEqual(r_1.height, 1)
-        self.assertEqual(r_1.x, 0)
-        self.assertEqual(r_1.y, 0)
+        self.assertEqual(self.r_1.width, 1)
+        self.assertEqual(self.r_1.height, 1)
+        self.assertEqual(self.r_1.x, 0)
+        self.assertEqual(self.r_1.y, 0)
 
-        r_1.x = 10
-        r_1.y = 10
-        self.assertEqual(r_1.x, 10)
-        self.assertEqual(r_1.y, 10)
+        self.r_1.x = 10
+        self.r_1.y = 10
+        self.assertEqual(self.r_1.x, 10)
+        self.assertEqual(self.r_1.y, 10)
 
     """ Tests functionality of super()__init__() call"""
 
     def test_id_none(self):
         """Tests id not passed in"""
-        r_2 = Rectangle(1, 1)
-        self.assertEqual(r_2.id, 2)
+        self.assertEqual(self.r_2.id, 2)
 
     def test_id_assigned(self):
         """Tests id passed in"""
-        r_3 = Rectangle(1, 1, 1, 1, 88)
-        self.assertEqual(r_3.id, 88)
+        self.assertEqual(self.r_3.id, 88)
 
     def test_nb_object_increment(self):
         """Tests private class attribute incrementation"""
-        r_4 = Rectangle(1, 1)
-        self.assertEqual(r_4.id, 3)
+        self.assertEqual(self.r_4.id, 3)
 
     """Tests number of arguments passed in"""
     def test_too_many_args(self):
@@ -96,3 +100,67 @@ class TestRectangle(unittest.TestCase):
         """Tests entering too few args to instantiate object"""
         with self.assertRaises(TypeError):
             r = Rectangle()
+
+    def test_width_typeerror(self):
+        """Test non-int validation for width"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Rectangle("hello", 1)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Rectangle(True, 1)
+
+    def test_height_typeerror(self):
+        """Test non-int validation for height"""
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r = Rectangle(1, "hello")
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r = Rectangle(1, True)
+
+    def test_x_typeerror(self):
+        """Test non-int validation for x"""
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Rectangle(1, 1, "hello")
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Rectangle(1, 1, True)
+
+    def test_y_typeerror(self):
+        """Test non-int validation for y"""
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Rectangle(1, 1, 1, "hello")
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Rectangle(1, 1, 1, True)
+
+    def test_width_valueerror(self):
+        """Test int validation <= 0 for width"""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Rectangle(-1, 1)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Rectangle(0, 1)
+
+    def test_height_valueerror(self):
+        """Test int validation <= 0 for height"""
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r = Rectangle(1, -1)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r = Rectangle(1, 0)
+
+    def test_x_valueerror(self):
+        """Test int validation < 0 for x"""
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r = Rectangle(1, 1, -1)
+
+    def test_y_valueerror(self):
+        """Test int validation <= 0 for y"""
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r = Rectangle(1, 1, 1, -1)
+
+    def test_area(self):
+        """test area"""
+        self.assertEqual(self.r_1.area(), 1)
+        self.assertEqual(self.r_2.area(), 20)
+        self.assertEqual(self.r_3.area(), 5)
+        self.assertEqual(self.r_4.area(), 36)
+
+    def test_area_args(self):
+        """Test too many args for area()"""
+        with self.assertRaises(TypeError):
+            r = self.r_1.area(1)
