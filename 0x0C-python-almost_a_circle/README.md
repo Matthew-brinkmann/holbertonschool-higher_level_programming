@@ -6,5 +6,3 @@ This project is to solidify our knowledge in using Python and JSON in backend we
 Contains all unittests for the classes created
 #### :open_file_folder: ./models
 Contains all the classes used in the project.
-#### :page_facing_up: planning.txt
-Contains the plans for each module created before coding + tests for each module
