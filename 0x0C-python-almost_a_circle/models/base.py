@@ -10,6 +10,7 @@ class Base:
     the id attribute of all child classes
     """
     __nb_objects = 0
+
     def __init__(self, id=None):
         """
         init for Base Class
