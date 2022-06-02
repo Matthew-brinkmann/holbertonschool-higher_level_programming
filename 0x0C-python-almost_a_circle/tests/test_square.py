@@ -207,5 +207,11 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(self.r_4), "[Square] (51) 0/0 - 6")
         self.r_4.update(x=4, y=9)
         self.assertEqual(str(self.r_4), "[Square] (51) 4/9 - 6")
-        self.r_4.update(width=7, id=52)
+        self.r_4.update(size=7, id=52)
         self.assertEqual(str(self.r_4), "[Square] (52) 4/9 - 7")
+
+    def test_dict(self):
+        """ tests to_dict method"""
+        d1 = self.r_1.to_dictionary()
+        self.assertEqual({"id": 1, "size": 1, "x": 0, "y": 0}, d1)
+        self.assertTrue(type(d1) is dict)
