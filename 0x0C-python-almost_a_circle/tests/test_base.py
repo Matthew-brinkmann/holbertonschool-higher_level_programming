@@ -167,3 +167,41 @@ class TestBase(unittest.TestCase):
         list_output = Square.load_from_file()
         self.assertEqual(len(list_output), 0)
         self.assertEqual(list, type(list_output))
+
+    def test_write_csv_file(self):
+        """tests write to file"""
+        s1 = Square(1, 1, 1, 1)
+        s2 = Square(2, 2, 2, 2)
+        r1 = Rectangle(3, 3, 3, 3, 3)
+        r2 = Rectangle(4, 4, 4, 4, 4)
+        Square.save_to_file_csv([s1, s2])
+        with open('Square.csv', 'r', encoding='utf-8') as f:
+            text = f.readlines()
+        self.assertEqual(text[0][0], "1")
+        self.assertEqual(text[1][0], "2")
+
+        Rectangle.save_to_file_csv([r1, r2])
+        with open('Rectangle.csv', 'r', encoding='utf-8') as f:
+            text = f.readlines()
+        self.assertEqual(text[0][0], "3")
+        self.assertEqual(text[1][0], "4")
+
+    def test_read_from_csv(self):
+        """tests the read from csv file method"""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file_csv(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file_csv()
+        self.assertEqual(list_rectangles_output[0].y, 8)
+        self.assertEqual(list_rectangles_output[1].height, 4)
+
+    def test_empty_read_from_csv(self):
+        """ tests the read from csv file methods with empty file"""
+        try:
+            os.remove('Square.csv')
+        except Exception:
+            pass
+        list_output = Square.load_from_file_csv()
+        self.assertEqual(0, len(list_output))
+        self.assertEqual(list, type(list_output))
