@@ -8,6 +8,8 @@ import inspect
 import pycodestyle
 import json
 
+from models.rectangle import Rectangle
+from models.square import Square
 from models import base
 Base = base.Base
 
@@ -94,3 +96,31 @@ class TestBase(unittest.TestCase):
         jsonStr = Base.to_json_string(None)
         self.assertTrue(type(jsonStr) is str)
         self.assertEqual(jsonStr, "[]")
+
+    def test_write_file(self):
+        """tests write to file"""
+        s1 = Square(1, 1, 1, 1)
+        s2 = Square(2, 2, 2, 2)
+        r1 = Rectangle(3, 3, 3, 3, 3)
+        r2 = Rectangle(4, 4, 4, 4, 4)
+        Square.save_to_file([s1, s2])
+        with open('Square.json', 'r', encoding='utf-8') as f:
+            text = f.read()
+        textAsDicts = eval(text)
+        self.assertEqual(textAsDicts[0]['id'], 1)
+        self.assertEqual(textAsDicts[1]['x'], 2)
+
+        Rectangle.save_to_file([r1, r2])
+        with open('Rectangle.json', 'r', encoding='utf-8') as f:
+            text = f.read()
+        textAsDicts = eval(text)
+        self.assertEqual(textAsDicts[0]['id'], 3)
+        self.assertEqual(textAsDicts[1]['x'], 4)
+
+    def test_empty_from_JSON_str(self):
+        """Tests for None from JSON converter"""
+        self.assertEqual([], Base.from_json_string(""))
+
+    def test_None_from_JSON_str(self):
+        """Test for passing empty string"""
+        self.assertEqual([], Base.from_json_string(None))
