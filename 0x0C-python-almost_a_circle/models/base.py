@@ -44,3 +44,15 @@ class Base:
                 info.append(cls.to_dictionary(i))
         with open(filename, 'w', encoding="UTF-8") as f:
             f.write(cls.to_json_string(info))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """creates an instance of a subclass from dictionary"""
+        dummy = cls(1, 1)
+        dummy.update(**dictionary)
+        return (dummy)
+
+    @classmethod
+    def load_from_file(cls):
+        """will return a list of instances from a file"""
+        pass

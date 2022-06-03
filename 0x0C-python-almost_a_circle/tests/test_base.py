@@ -54,6 +54,7 @@ class TestBase(unittest.TestCase):
     """ Tests functionality of class"""
     def test_id_none(self):
         """ Tests id as none"""
+        Base._Base__nb_objects = 0
         b_1 = Base()
         self.assertEqual(b_1.id, 1)
 
@@ -124,3 +125,24 @@ class TestBase(unittest.TestCase):
     def test_None_from_JSON_str(self):
         """Test for passing empty string"""
         self.assertEqual([], Base.from_json_string(None))
+
+    def test_create_square(self):
+        """tesrt create method for square class"""
+        s = Square(1, 2, 3, 4)
+        sqDict = s.to_dictionary()
+        s2 = Square.create(**sqDict)
+        self.assertEqual(s.id, s2.id)
+        self.assertEqual(s.y, s2.y)
+        self.assertEqual(s.x, s2.x)
+        self.assertEqual(s.size, s2.size)
+
+    def test_create_rectangle(self):
+        """test create method for rectangle"""
+        r = Rectangle(1, 2, 3, 4, 5)
+        reDict = r.to_dictionary()
+        r2 = Rectangle.create(**reDict)
+        self.assertEqual(r.id, r2.id)
+        self.assertEqual(r.y, r2.y)
+        self.assertEqual(r.x, r2.x)
+        self.assertEqual(r.height, r2.height)
+        self.assertEqual(r.width, r2.width)
