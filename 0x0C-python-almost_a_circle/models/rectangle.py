@@ -24,6 +24,14 @@ class Rectangle(Base):
         retStr += f"{self.x}/{self.y} - {self.width}/{self.height}"
         return (retStr)
 
+    def to_dictionary(self):
+        """ returns a dictionary containing all varaibles"""
+        return {'id': self.id,
+                'width': self.width,
+                'height': self.height,
+                'x': self.x,
+                'y': self.y}
+
     def area(self):
         """ returns the area of the rectangle"""
         return (self.width * self.height)

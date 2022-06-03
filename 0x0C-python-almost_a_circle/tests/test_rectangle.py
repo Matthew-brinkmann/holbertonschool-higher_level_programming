@@ -68,6 +68,8 @@ class TestRectangle(unittest.TestCase):
 
     def test_properties(self):
         """Tests all setters and getters"""
+        self.r_1.x = 0
+        self.r_1.y = 0
         self.assertEqual(self.r_1.width, 1)
         self.assertEqual(self.r_1.height, 1)
         self.assertEqual(self.r_1.x, 0)
@@ -185,6 +187,8 @@ class TestRectangle(unittest.TestCase):
 
     def test_str(self):
         """Test the __str__ method"""
+        self.x = 10
+        self.y = 10
         self.assertEqual(str(self.r_1), "[Rectangle] (1) 10/10 - 1/1")
         self.assertEqual(str(self.r_3), "[Rectangle] (88) 1/1 - 1/5")
 
@@ -226,3 +230,16 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(self.r_4), "[Rectangle] (51) 4/9 - 6/6")
         self.r_4.update(width=7, id=52, height=9)
         self.assertEqual(str(self.r_4), "[Rectangle] (52) 4/9 - 7/9")
+
+    def test_dict(self):
+        """ tests to_dict method"""
+        d1 = self.r_1.to_dictionary()
+        self.assertEqual(
+            {"id": 1, "width": 1, "height": 1, "x": 0, "y": 0}, d1)
+        self.assertTrue(type(d1) is dict)
+        self.r_1.x = 5
+        self.r_1.y = 2
+        d1 = self.r_1.to_dictionary()
+        self.assertEqual(
+            {"id": 1, "width": 1, "height": 1, "x": 5, "y": 2}, d1)
+        self.assertTrue(type(d1) is dict)
