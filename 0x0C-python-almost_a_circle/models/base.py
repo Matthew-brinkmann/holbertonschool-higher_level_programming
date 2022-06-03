@@ -55,4 +55,13 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """will return a list of instances from a file"""
-        pass
+        filename = cls.__name__ + ".json"
+        retList = []
+        try:
+            with open(filename, 'r') as f:
+                retList = cls.from_json_string(f.read())
+            for i, string in enumerate(retList):
+                retList[i] = cls.create(**retList[i])
+        except Exception:
+            return ([])
+        return (retList)
