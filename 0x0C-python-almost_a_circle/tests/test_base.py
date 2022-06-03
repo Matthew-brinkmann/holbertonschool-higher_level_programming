@@ -6,6 +6,7 @@ Contains tests for Base class
 import unittest
 import inspect
 import pycodestyle
+import json
 
 from models import base
 Base = base.Base
@@ -63,3 +64,33 @@ class TestBase(unittest.TestCase):
         """ Tests entering too many args to instantiate class"""
         with self.assertRaises(TypeError):
             b = Base(1, 2)
+
+    def test_nb_attribute(self):
+        """Tests nb_objects as a private instance attribute"""
+        b_3 = Base(3)
+        with self.assertRaises(AttributeError):
+            print(b_3.nb_objects)
+        with self.assertRaises(AttributeError):
+            print(b_3.__nb_objects)
+
+    def test_to_json_string(self):
+        """Tests to json string"""
+        Base._Base__nb_objects = 0
+        dictTest1 = {"id": 9, "width": 5, "height": 6, "x": 7, "y": 8}
+        dictTest2 = {"id": 2, "width": 2, "height": 3, "x": 4, "y": 0}
+        jsonStr = Base.to_json_string([dictTest1, dictTest2])
+        self.assertTrue(type(jsonStr) is str)
+        newDict = json.loads(jsonStr)
+        self.assertEqual(newDict, [dictTest1, dictTest2])
+
+    def test_empty_to_json_string(self):
+        """Test for passing empty list/ None"""
+        jsonStr = Base.to_json_string([])
+        self.assertTrue(type(jsonStr) is str)
+        self.assertEqual(jsonStr, "[]")
+
+    def test_None_to_json_String(self):
+        """test for None to JSON converter"""
+        jsonStr = Base.to_json_string(None)
+        self.assertTrue(type(jsonStr) is str)
+        self.assertEqual(jsonStr, "[]")
