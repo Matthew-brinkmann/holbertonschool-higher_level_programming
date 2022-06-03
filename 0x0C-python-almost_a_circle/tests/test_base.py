@@ -7,6 +7,7 @@ import unittest
 import inspect
 import pycodestyle
 import json
+import os
 
 from models.rectangle import Rectangle
 from models.square import Square
@@ -146,3 +147,23 @@ class TestBase(unittest.TestCase):
         self.assertEqual(r.x, r2.x)
         self.assertEqual(r.height, r2.height)
         self.assertEqual(r.width, r2.width)
+
+    def test_read_from_file(self):
+        """tests the read from file method"""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+        self.assertEqual(list_rectangles_output[0].y, 8)
+        self.assertEqual(list_rectangles_output[1].height, 4)
+
+    def test_empty_read_from_file(self):
+        """tests the read from file method with empty file"""
+        try:
+            os.remove('Square.json')
+        except Exception:
+            pass
+        list_output = Square.load_from_file()
+        self.assertEqual(len(list_output), 0)
+        self.assertEqual(list, type(list_output))

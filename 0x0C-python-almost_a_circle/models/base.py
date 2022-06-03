@@ -3,6 +3,7 @@
 Module contains Class Base:
 """
 import json
+import csv
 
 
 class Base:
@@ -65,3 +66,42 @@ class Base:
         except Exception:
             return ([])
         return (retList)
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """writes the list of objects to a file"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w', newline='') as csvfile:
+            csvWriter = csv.writer(csvfile)
+            if cls.__name__ == "Rectangle":
+                for obj in list_objs:
+                    csvWriter.writerow([obj.id, obj.width, obj.height,
+                                         obj.x, obj.y])
+            elif cls.__name__ == "Square":
+                for obj in list_objs:
+                    csvWriter.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = cls.__name__ + ".csv"
+        retList = []
+        try:
+            with open(filename, 'r', encoding='utf-8') as csvfile:
+                csvReader = csv.reader(csvfile)
+                for args in csvReader:
+                    if cls.__name__ == "Rectangle":
+                        dictionary = {"id": int(args[0]),
+                                      "width": int(args[1]),
+                                      "height": int(args[2]),
+                                      "x": int(args[3]),
+                                      "y": int(args[4])}
+                    elif cls.__name__ == "Square":
+                        dictionary = {"id": int(args[0]),
+                                      "size": int(args[1]),
+                                      "x": int(args[2]),
+                                      "y": int(args[3])}
+                        obj = cls.create(**dictionary)
+                        retList.append(obj)
+        except Exception:
+            return ([])
+        return retList
