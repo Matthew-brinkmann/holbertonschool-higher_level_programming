@@ -53,16 +53,22 @@ class TestBaseDocs(unittest.TestCase):
 
 class TestBase(unittest.TestCase):
     """ Tests functionality of class"""
+    @classmethod
+    def setUpClass(cls):
+        """ set up all r_ attributes for all tests """
+        Base._Base__nb_objects = 0
+        cls.b_2 = Square(8, 0, 0, 8)
+        cls.b_3 = Square(3)
+
     def test_id_none(self):
         """ Tests id as none"""
         Base._Base__nb_objects = 0
-        b_1 = Base()
+        b_1 = Square(5)
         self.assertEqual(b_1.id, 1)
 
     def test_id_assigned(self):
         """ Tests id is give"""
-        b_2 = Base(8)
-        self.assertEqual(b_2.id, 8)
+        self.assertEqual(self.b_2.id, 8)
 
     def test_too_many_args(self):
         """ Tests entering too many args to instantiate class"""
@@ -71,11 +77,10 @@ class TestBase(unittest.TestCase):
 
     def test_nb_attribute(self):
         """Tests nb_objects as a private instance attribute"""
-        b_3 = Base(3)
         with self.assertRaises(AttributeError):
-            print(b_3.nb_objects)
+            print(self.b_3.nb_objects)
         with self.assertRaises(AttributeError):
-            print(b_3.__nb_objects)
+            print(self.b_3.__nb_objects)
 
     def test_to_json_string(self):
         """Tests to json string"""
@@ -99,13 +104,10 @@ class TestBase(unittest.TestCase):
         self.assertTrue(type(jsonStr) is str)
         self.assertEqual(jsonStr, "[]")
 
-    def test_write_file(self):
-        """tests write to file"""
+    def test_write_file_square(self):
+        """tests write to file square"""
         s1 = Square(1, 1, 1, 1)
         s2 = Square(2, 2, 2, 2)
-        r1 = Rectangle(3, 3, 3, 3, 3)
-        r2 = Rectangle(4, 4, 4, 4, 4)
-        junk = {"id": 123, "width": 5, "height": 5, "x": 2, "y": 4}
         Square.save_to_file([s1, s2])
         with open('Square.json', 'r', encoding='utf-8') as f:
             text = f.read()
@@ -113,6 +115,10 @@ class TestBase(unittest.TestCase):
         self.assertEqual(textAsDicts[0]['id'], 1)
         self.assertEqual(textAsDicts[1]['x'], 2)
 
+    def test_write_file_rectangle(self):
+        """tests write to file for rectangle"""
+        r1 = Rectangle(3, 3, 3, 3, 3)
+        r2 = Rectangle(4, 4, 4, 4, 4)
         Rectangle.save_to_file([r1, r2])
         with open('Rectangle.json', 'r', encoding='utf-8') as f:
             text = f.read()
@@ -120,6 +126,11 @@ class TestBase(unittest.TestCase):
         self.assertEqual(textAsDicts[0]['id'], 3)
         self.assertEqual(textAsDicts[1]['x'], 4)
 
+    def test_write_file_rectangle_with_junk(self):
+        """tests write to file with just information"""
+        r1 = Rectangle(3, 3, 3, 3, 3)
+        r2 = Rectangle(4, 4, 4, 4, 4)
+        junk = {"id": 123, "width": 5, "height": 5, "x": 2, "y": 4}
         Rectangle.save_to_file([junk, r1, r2])
         with open('Rectangle.json', 'r', encoding='utf-8') as f:
             text = f.read()
@@ -140,6 +151,7 @@ class TestBase(unittest.TestCase):
         s = Square(1, 2, 3, 4)
         sqDict = s.to_dictionary()
         s2 = Square.create(**sqDict)
+        self.assertFalse(s is s2)
         self.assertEqual(s.id, s2.id)
         self.assertEqual(s.y, s2.y)
         self.assertEqual(s.x, s2.x)
