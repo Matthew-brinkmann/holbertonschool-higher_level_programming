@@ -105,6 +105,7 @@ class TestBase(unittest.TestCase):
         s2 = Square(2, 2, 2, 2)
         r1 = Rectangle(3, 3, 3, 3, 3)
         r2 = Rectangle(4, 4, 4, 4, 4)
+        junk = {"id": 123, "width": 5, "height": 5, "x": 2, "y": 4}
         Square.save_to_file([s1, s2])
         with open('Square.json', 'r', encoding='utf-8') as f:
             text = f.read()
@@ -113,6 +114,13 @@ class TestBase(unittest.TestCase):
         self.assertEqual(textAsDicts[1]['x'], 2)
 
         Rectangle.save_to_file([r1, r2])
+        with open('Rectangle.json', 'r', encoding='utf-8') as f:
+            text = f.read()
+        textAsDicts = eval(text)
+        self.assertEqual(textAsDicts[0]['id'], 3)
+        self.assertEqual(textAsDicts[1]['x'], 4)
+
+        Rectangle.save_to_file([junk, r1, r2])
         with open('Rectangle.json', 'r', encoding='utf-8') as f:
             text = f.read()
         textAsDicts = eval(text)

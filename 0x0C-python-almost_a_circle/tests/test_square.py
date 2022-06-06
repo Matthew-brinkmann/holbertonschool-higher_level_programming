@@ -100,26 +100,59 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             r = Square()
 
-    def test_width_typeerror(self):
-        """Test non-int validation for width"""
+    def test_string_typeerror(self):
+        """Test non-int string validation"""
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             r = Square("hello")
-        with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r = Square(True)
-
-    def test_x_typeerror(self):
-        """Test non-int validation for x"""
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             r = Square(1, "hello")
-        with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r = Square(1, True)
-
-    def test_y_typeerror(self):
-        """Test non-int validation for y"""
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r = Square(1, 1, "hello")
+
+    def test_boolean_typeerror(self):
+        """Test non-int boolean  validation"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Square(True)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Square(1, True)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r = Square(1, 1, True)
+
+    def test_dict_typeerror(self):
+        """Test non-int dict validation"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Square({1, 4})
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Square(1, {1, 4})
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Square(1, 1, {1, 4})
+
+    def test_list_typeerror(self):
+        """Test non-int dict validation"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Square([2])
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Square(1, [2])
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Square(1, 1, [2])
+
+    def test_tuple_typeerror(self):
+        """test non-int tuple validation"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Square((1,))
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Square(1, (1,))
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Square(1, 1, (1,))
+
+    def test_none_typeerror(self):
+        """test non-int None validation"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Square(None)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Square(1, None)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Square(1, 1, None)
 
     def test_width_valueerror(self):
         """Test int validation <= 0 for width"""

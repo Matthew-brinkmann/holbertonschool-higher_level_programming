@@ -42,7 +42,8 @@ class Base:
         info = []
         if list_objs is not None:
             for i in list_objs:
-                info.append(cls.to_dictionary(i))
+                if issubclass(type(i), Base):
+                    info.append(cls.to_dictionary(i))
         with open(filename, 'w', encoding="UTF-8") as f:
             f.write(cls.to_json_string(info))
 
@@ -75,11 +76,13 @@ class Base:
             csvWriter = csv.writer(csvfile)
             if cls.__name__ == "Rectangle":
                 for obj in list_objs:
-                    csvWriter.writerow([obj.id, obj.width, obj.height,
-                                        obj.x, obj.y])
+                    if issubclass(type(obj), Base):
+                        csvWriter.writerow([obj.id, obj.width, obj.height,
+                                            obj.x, obj.y])
             elif cls.__name__ == "Square":
                 for obj in list_objs:
-                    csvWriter.writerow([obj.id, obj.size, obj.x, obj.y])
+                    if issubclass(type(obj), Base):
+                        csvWriter.writerow([obj.id, obj.size, obj.x, obj.y])
 
     @classmethod
     def load_from_file_csv(cls):
