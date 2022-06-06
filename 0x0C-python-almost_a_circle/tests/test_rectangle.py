@@ -105,63 +105,69 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             r = Rectangle()
 
-    def test_width_typeerror(self):
-        """Test non-int validation for width"""
+    def test_string_typeerror(self):
+        """Test non-int string validation"""
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             r = Rectangle("hello", 1)
-        with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r = Rectangle(True, 1)
-        with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r = Rectangle({1, 4}, 1)
-        with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r = Rectangle([2], 1)
-        with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r = Rectangle((1,), 1)
-        with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r = Rectangle(None, 1)
-
-    def test_height_typeerror(self):
-        """Test non-int validation for height"""
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             r = Rectangle(1, "hello")
-        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r = Rectangle(1, True)
-        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r = Rectangle(1, {1, 4})
-        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r = Rectangle(1, [2])
-        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r = Rectangle(1, (1,))
-        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r = Rectangle(1, None)
-
-    def test_x_typeerror(self):
-        """Test non-int validation for x"""
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             r = Rectangle(1, 1, "hello")
-        with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r = Rectangle(1, 1, True)
-        with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r = Rectangle(1, 1, {1, 4})
-        with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r = Rectangle(1, 1, [2])
-        with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r = Rectangle(1, 1, (1,))
-        with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r = Rectangle(1, 1, None)
-
-    def test_y_typeerror(self):
-        """Test non-int validation for y"""
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r = Rectangle(1, 1, 1, "hello")
+
+    def test_boolean_typeerror(self):
+        """Test non-int boolean validation"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Rectangle(True, 1)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r = Rectangle(1, True)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Rectangle(1, 1, True)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r = Rectangle(1, 1, 1, True)
+
+    def test_dict_typeerror(self):
+        """Test non-int dictionary validation"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Rectangle({1, 4}, 1)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r = Rectangle(1, {1, 4})
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Rectangle(1, 1, {1, 4})
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r = Rectangle(1, 1, 1, {1, 4})
+
+    def test_list_typeerror(self):
+        """Test non-int list validation"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Rectangle([2], 1)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r = Rectangle(1, [2])
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Rectangle(1, 1, [2])
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r = Rectangle(1, 1, 1, [2])
+
+    def test_tuple_typeerror(self):
+        """ test non-int tuple validation"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Rectangle((1,), 1)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r = Rectangle(1, (1,))
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Rectangle(1, 1, (1,))
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r = Rectangle(1, 1, 1, (1,))
+
+    def test_none_typeerror(self):
+        """ test non-int None validation"""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Rectangle(None, 1)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r = Rectangle(1, None)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Rectangle(1, 1, None)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r = Rectangle(1, 1, 1, None)
 
