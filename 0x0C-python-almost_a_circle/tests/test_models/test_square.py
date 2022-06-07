@@ -243,6 +243,29 @@ class TestRectangle(unittest.TestCase):
         self.r_4.update(size=7, id=52)
         self.assertEqual(str(self.r_4), "[Square] (52) 4/9 - 7")
 
+    def test_update_setter_usage(self):
+        """tests that the update method uses setter with *args"""
+        r_5 = Square(1, 1, 0, 0, 1)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r.update(1, "hello")
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r.update(1, 1, "hello")
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r.update(1, 1, 1, "hello")
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r.update(1, 1, 1, 1, "hello")
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r.update(1, 0)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r.update(1, -1)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r.update(1, 1, 0)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r.update(1, 1, -1)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r.update(1, 1, 1, -1)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+
     def test_dict(self):
         """ tests to_dict method"""
         d1 = self.r_1.to_dictionary()
