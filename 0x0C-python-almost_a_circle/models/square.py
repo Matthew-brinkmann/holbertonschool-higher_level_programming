@@ -35,9 +35,9 @@ class Square(Rectangle):
                     self.id = arg
                 elif i == 1:
                     self.size = arg
-                elif i == 3:
+                elif i == 2:
                     self.x = arg
-                elif i == 4:
+                elif i == 3:
                     self.y = arg
         elif kwargs is not None:
             for (key, value) in kwargs.items():
