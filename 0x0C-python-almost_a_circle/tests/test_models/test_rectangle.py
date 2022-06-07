@@ -291,6 +291,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             r.update(1, 1, 1, -1)
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r.update(1, 1, 1, 1, -1)
 
     def test_dict(self):
         """ tests to_dict method"""
