@@ -4,3 +4,4 @@ node_modules
 package*.json
 *main.py
 *.pyc
+*main.js
