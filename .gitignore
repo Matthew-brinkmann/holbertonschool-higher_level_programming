@@ -1,2 +1,6 @@
 *~
 local_*
+node_modules
+package*.json
+*main.py
+*.pyc
