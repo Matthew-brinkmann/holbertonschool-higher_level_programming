@@ -1,5 +1,6 @@
 *~
 local_*
+Local_*
 node_modules
 package*.json
 *main.py
