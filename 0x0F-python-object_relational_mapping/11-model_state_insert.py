@@ -14,13 +14,11 @@ if __name__ == "__main__":
                            .format(argv[1], argv[2], argv[3]))
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
-    dbQueryObject = Session()
-    stateNameSearch = argv[4]
-    stateSearch = dbQueryObject.query(State)\
-                               .filter(State.name == stateNameSearch)\
-                               .first()
-    if stateSearch is not None:
-        print(f"{stateSearch.id}")
-    else:
-        print("Not found")
-    dbQueryObject.close()
+    # dbControlObject is a better name because it does more than
+    # query it controls the DB object.
+    dbControlObject = Session()
+    new_state = State(name='Louisiana')
+    dbControlObject.add(new_state)
+    print(new_state.id)
+    dbControlObject.commit()
+    dbControlObject.close()
