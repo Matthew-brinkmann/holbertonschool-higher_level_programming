@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 '''
-lists all State objects from the database hbtn_0e_6_usa,
-names passed as argument
+inserts a State object to the database hbtn_0e_6_usa
 '''
 from model_state import Base, State
 from sqlalchemy import create_engine
@@ -17,8 +16,8 @@ if __name__ == "__main__":
     # dbControlObject is a better name because it does more than
     # query it controls the DB object.
     dbControlObject = Session()
-    newState = State(name='Louisiana')
-    dbControlObject.add(newState)
-    print(newState.id)
+    new_state = State(name='Louisiana')
+    dbControlObject.add(new_state)
+    print(new_state.id)
     dbControlObject.commit()
     dbControlObject.close()
