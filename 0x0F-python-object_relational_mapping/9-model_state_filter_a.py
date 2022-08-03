@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-script that lists the first State objects from the database hbtn_0e_6_usa
+lists all State objects from the database hbtn_0e_6_usa that contain 'a'
 '''
 from model_state import Base, State
 from sqlalchemy import create_engine
@@ -14,9 +14,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     dbQueryObject = Session()
-    firstState = dbQueryObject.query(State).order_by(State.id).first()
-    if (firstState is not None):
-        print(f'{firstState.id}: {firstState.name}')
-    else:
-        print('Nothing')
+    listOfFilteredStates = dbQueryObject.query(State)\
+                                        .filter(State.name.contains('a'))\
+                                        .order_by(State.id)
+    for state in listOfFilteredStates:
+        print(f'{state.id}: {state.name}')
     dbQueryObject.close()
