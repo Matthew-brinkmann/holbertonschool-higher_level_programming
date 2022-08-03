@@ -15,12 +15,13 @@ if __name__ == "__main__":
                                       db=sys.argv[3])
     dbCurser = SQLdbConnection.cursor()
     dbCurser.execute(f'''
-                      SELECT * FROM states
-                      ORDER BY id ASC
+                      SELECT cities.id, cities.name, states.name
+                      FROM cities INNER JOIN states
+                      ON cities.state_id=states.id
+                      ORDER BY cities.id ASC
                       ''')
     query_rows = dbCurser.fetchall()
     for row in query_rows:
-        if (sys.argv[4] == row[1]):
-            print(row)
+        print(row)
     dbCurser.close()
     SQLdbConnection.close()
