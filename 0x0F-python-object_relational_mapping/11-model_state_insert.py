@@ -17,8 +17,8 @@ if __name__ == "__main__":
     # dbControlObject is a better name because it does more than
     # query it controls the DB object.
     dbControlObject = Session()
-    new_state = State(name='Louisiana')
-    dbControlObject.add(new_state)
-    print(new_state.id)
+    newState = State(name='Louisiana')
+    dbControlObject.add(newState)
+    print(newState.id)
     dbControlObject.commit()
     dbControlObject.close()
