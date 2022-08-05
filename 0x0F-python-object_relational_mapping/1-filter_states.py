@@ -13,14 +13,10 @@ if __name__ == "__main__":
                                       user=sys.argv[1],
                                       passwd=sys.argv[2],
                                       db=sys.argv[3])
-    dbCurser = SQLdbConnection.cursor()
-    dbCurser.execute('''
-                      SELECT * FROM states
-                      WHERE states.name LIKE 'N%'
-                      ORDER BY id ASC
-                      ''')
-    query_rows = dbCurser.fetchall()
+    dbCur = SQLdbConnection.cursor()
+    dbCur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    query_rows = dbCur.fetchall()
     for row in query_rows:
         print(row)
-    dbCurser.close()
+    dbCur.close()
     SQLdbConnection.close()
