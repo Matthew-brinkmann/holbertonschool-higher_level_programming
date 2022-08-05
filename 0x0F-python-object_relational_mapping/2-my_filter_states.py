@@ -16,7 +16,7 @@ if __name__ == "__main__":
     dbCurser = SQLdbConnection.cursor()
     dbCurser.execute('''
                       SELECT * FROM states
-                      WHERE states.name = '{}'
+                      WHERE states.name LIKE BINARY '{}'
                       ORDER BY id ASC
                       '''.format(sys.argv[4]))
     query_rows = dbCurser.fetchall()
