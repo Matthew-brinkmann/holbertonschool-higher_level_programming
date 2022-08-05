@@ -15,7 +15,8 @@ if __name__ == "__main__":
                                       passwd=sys.argv[2],
                                       db=sys.argv[3])
     dbCur = SQLdbConnection.cursor()
-    dbCur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    dbCur.execute("SELECT * FROM states\
+                   WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
     query_rows = dbCur.fetchall()
     if (query_rows is not None):
         for row in query_rows:
