@@ -20,4 +20,5 @@ if __name__ == "__main__":
     dbControlObject.add(new_state)
     print(new_state.id)
     dbControlObject.commit()
+    dbControlObject.flush()
     dbControlObject.close()
