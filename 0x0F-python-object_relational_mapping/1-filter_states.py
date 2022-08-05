@@ -17,7 +17,8 @@ if __name__ == "__main__":
     dbCur = SQLdbConnection.cursor()
     dbCur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
     query_rows = dbCur.fetchall()
-    for row in query_rows:
-        print(row)
+    if (query_rows is not None):
+        for row in query_rows:
+            print(row)
     dbCur.close()
     SQLdbConnection.close()
