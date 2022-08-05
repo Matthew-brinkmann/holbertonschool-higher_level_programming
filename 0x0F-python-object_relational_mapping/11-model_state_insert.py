@@ -18,7 +18,7 @@ if __name__ == "__main__":
     dbControlObject = Session()
     new_state = State(name='Louisiana')
     dbControlObject.add(new_state)
-    print(new_state.id)
     dbControlObject.commit()
     dbControlObject.flush()
+    print(new_state.id)
     dbControlObject.close()
