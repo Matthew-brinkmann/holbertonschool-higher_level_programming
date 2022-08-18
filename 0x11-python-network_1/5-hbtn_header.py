@@ -9,4 +9,4 @@ import sys
 if __name__ == "__main__":
     urlToQuery = sys.argv[1]
     responseContent = get(urlToQuery)
-    print(responseContent.headers['X-Request-Id'])
+    print(responseContent.headers.get('X-Request-Id'))
