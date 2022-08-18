@@ -6,8 +6,7 @@ from requests import get
 
 if __name__ == "__main__":
     urlToQuery = 'https://intranet.hbtn.io/status'
-    urlRequest = get(urlToQuery)
-    responseContent = urlRequest.text
+    responseContent = get(urlToQuery)
     print('Body response:')
-    print("\t- type: {}".format(type(responseContent)))
-    print("\t- content: {}".format(responseContent))
+    print("\t- type: {}".format(type(responseContent.text)))
+    print("\t- content: {}".format(responseContent.text))
