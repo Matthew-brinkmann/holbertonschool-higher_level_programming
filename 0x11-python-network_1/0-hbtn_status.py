@@ -2,12 +2,10 @@
 """
 script that fetches https://intranet.hbtn.io/status
 """
+import urllib.request
+
 
 if __name__ == "__main__":
-    """
-    entry point for task, will not run if imported.
-    """
-    import urllib.request
     url = "https://intranet.hbtn.io/status"
     with urllib.request.urlopen(url) as response:
         content = response.read()
