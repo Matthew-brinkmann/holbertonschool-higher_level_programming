@@ -5,12 +5,13 @@ the body of the response.
 If the HTTP status code is greater than or equal to 400,
 print: Error code: followed by the value of the HTTP status code
 """
-import requests
+from requests import get
+import sys
 
 
 if __name__ == "__main__":
-    urlToQuery = 'https://intranet.hbtn.io/status'
-    responseContent = requests.get(urlToQuery)
+    urlToQuery = sys.argv[1]
+    responseContent = get(urlToQuery)
     if responseContent.ok:
         print(responseContent.text)
     else:
