@@ -18,7 +18,6 @@ if __name__ == '__main__':
     try:
         responseDict = response.json()
     except ValueError:
-        print(None)
         sys.exit()
     for item in responseDict[:10]:
         print(item.get('sha'), end=": ")
