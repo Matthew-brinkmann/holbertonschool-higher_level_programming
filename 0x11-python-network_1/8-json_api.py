@@ -23,6 +23,7 @@ if __name__ == "__main__":
             valueName = jsonResponse.get('name')
         except ValueError:
             print('Not a valid JSON')
+            sys.exit()
         if len(jsonResponse) == 0:
             print('No result')
             sys.exit()
