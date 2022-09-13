@@ -5,12 +5,11 @@ let appearsIn = 0;
 let totalMovies = 0;
 axios.get(url)
   .then(function (response) {
-    totalMovies = response.data.length;
-    for (let i = 0; i < totalMovies; i++) {
-      const chars = response.data.results[i].characters;
-      const totalChars = chars.length;
-      for (let j = 0; j < totalChars; j++) {
-        if (chars[j].includes('18')) {
+    totalMovies = response.data.results;
+    for (const filmNumber in totalMovies) {
+      const chars = totalMovies[filmNumber].characters;
+      for (const charNumber in chars) {
+        if (chars[charNumber].includes('18')) {
           appearsIn++;
         }
       }
