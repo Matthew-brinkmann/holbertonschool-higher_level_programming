@@ -8,11 +8,14 @@ axios.get(url)
     totalMovies = response.data.count;
     for (let i = 0; i < totalMovies; i++) {
       const chars = response.data.results[i].characters;
-      if (chars.includes('https://swapi-api.hbtn.io/api/people/18/')) {
-        appearsIn++;
+      const totalChars = chars.length;
+      for (let j = 0; j < totalChars; j++) {
+        if (chars[j].includes('18')) {
+          appearsIn++;
+        }
       }
     }
     console.log(appearsIn);
   }).catch(function (error) {
-    console.log(error.response.status);
+    console.log(error);
   });
