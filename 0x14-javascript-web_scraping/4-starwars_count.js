@@ -5,7 +5,7 @@ let appearsIn = 0;
 let totalMovies = 0;
 axios.get(url)
   .then(function (response) {
-    totalMovies = response.data.count;
+    totalMovies = response.data.length;
     for (let i = 0; i < totalMovies; i++) {
       const chars = response.data.results[i].characters;
       const totalChars = chars.length;
